@@ -85,44 +85,63 @@ $row=mysqli_fetch_array($result);
 				<a class="brand" href="reservation.php">RESERVATION</a>
 				<a class="brand" href="profile.php">PROFILE</a>
 				<a class="brand" href="viewhistory.php">BOOKING HISTORY</a>
-				<a class="brand" href="complainthistory.php">Complaint HISTORY</a>
+                <a class="brand" href="complainthistory.php">Complaint HISTORY</a>
 	</div>
 			</div>
 		</div>
 		
 		<div class="span12 well pass1">
-			<table style="width:100%;">
-			<tr>
-				<td><span style="font-weight:bold;font-size:25px;">Profile</span>
-				<a id="editp1" style="float:right;margin-right:5%;"class="btn btn-info"> Edit Profile</a></td>
-			<tr/>
+
+<?php
+$Uid=$_SESSION['id'];
+$sql = "SELECT `id`, `Uid`, `pnr`, `uname`, `Tnumber`, `class`, `doj`, `DOB`, `fromstn`, `tostn`, `Name`, `Age`, `sex`,
+ `Status` FROM `booking` WHERE `Uid`=$Uid" ;
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<table class='table'>
+    <thead>
+      <tr>
+        <th scope='col'>PNR</th>
+        <th scope='col'>Tnumber</th>
+        <th scope='col'>Class</th>
+        <th scope='col'>DOJ</th>
+
+        <th scope='col'>FROM</th>
+        <th scope='col'>TO</th>
+
+
+      </tr>
+    </thead>
+    <tbody>";
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+   $From=$row["fromstn"];
+   $pnr=$row["pnr"];
+   $doj=$row["doj"];
+   $class=$row["class"];
+   $tostn=$row["tostn"];
+   $Tnumber=$row["Tnumber"];
+   echo " <tr>
+   <th> $pnr </th>
+   <td> $Tnumber</td>
+   <td> $class</td>
+   <td>$doj</td>
+   <td>$From</td>
+   <td> $tostn </td>
+
+ </tr>";
+
+  }
+  echo "</tbody> </table>";
+} else {
+  echo "0 results";
+}
+
+?>
+
+
 			
-			<tr>
-				<td>
-					<div class="span8" style="float:left;width:80%;">
-					<table class="table">
-					<tr><td >First Name : </td> <td style="text-transform:capitalize;"><?php echo $row['f_name']; ?></td></tr>
-					<tr><td >Last Name : </td> <td style="text-transform:capitalize;"><?php echo $row['l_name']; ?></td></tr>
-					<tr><td>E-Mail : </td> <td><?php echo $row['email'];?></td></tr>
-					<tr><td>Dob : </td> <td><?php echo $row['dob']; ?></td></tr>
-					<tr><td> Gender :</td> <td><?php echo $row['gender'];?></td></tr>
-					<tr><td>Marital Status : </td> <td><?php echo $row['marital']; ?></td></tr>
-					<tr><td>Mobile No : </td> <td><?php echo $row['mobile'];?></td></tr>
-					<tr><td>Security Question : </td> <td><?php echo $row['ques']; ?></td></tr>
-					<tr><td>Answer : </td> <td><?php echo $row['ans']; ?></td></tr>
-					<tr><td></td> <td></td></tr>
-					</table>
-					</div>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-				<span style="width:35%;"><a id="cpass">Change Password</a></span>
-				<span class="label label-success" id="chang" style="float:right;display:none;">Password Successfully Changed &nbsp;&nbsp;&nbsp;<span>  <!-- display:none; color:#0000ff;-->
-				</td>
-			</tr>
-		</table>
 		</div>
 
 		<div class="span12 pass2 " style="display:none;">

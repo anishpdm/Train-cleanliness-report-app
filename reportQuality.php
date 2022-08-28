@@ -47,7 +47,7 @@ include './user_navbar.php';
 
 
                 </table>
-                </fo rm>
+                </form>
 
         </div>
 

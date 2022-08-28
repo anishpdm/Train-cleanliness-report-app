@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Aug 01, 2022 at 05:45 AM
--- Server version: 5.7.26
--- PHP Version: 7.3.8
+-- Generation Time: Aug 28, 2022 at 08:55 AM
+-- Server version: 5.7.32
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -41,6 +41,7 @@ INSERT INTO `Admin` (`Id`, `Uname`, `Pass`) VALUES
 
 CREATE TABLE `booking` (
   `id` int(11) NOT NULL,
+  `Uid` int(11) NOT NULL,
   `pnr` int(11) NOT NULL DEFAULT '0',
   `uname` varchar(150) NOT NULL,
   `Tnumber` int(11) NOT NULL,
@@ -59,8 +60,11 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`id`, `pnr`, `uname`, `Tnumber`, `class`, `doj`, `DOB`, `fromstn`, `tostn`, `Name`, `Age`, `sex`, `Status`) VALUES
-(22, 2393494, 'anish@logixspace.com', 12931, '2A', '2022-10-13', '2022-08-01', 'SURAT', 'BARODA', 'TESTANIS', 21, 'male', 'Confirmed');
+INSERT INTO `booking` (`id`, `Uid`, `pnr`, `uname`, `Tnumber`, `class`, `doj`, `DOB`, `fromstn`, `tostn`, `Name`, `Age`, `sex`, `Status`) VALUES
+(22, 1, 2393494, 'anish@logixspace.com', 12931, '2A', '2022-10-13', '2022-08-01', 'SURAT', 'BARODA', 'TESTANIS', 21, 'male', 'Confirmed'),
+(23, 1, 4834549, 'anish@logixspace.com', 12931, '1A', '2022-08-28', '2022-08-28', 'BCT', 'ADI', 'RAHUL', 32, 'male', 'Confirmed'),
+(24, 1, 9786602, 'anish@logixspace.com', 12931, '1A', '2022-08-28', '2022-08-28', 'BCT', 'ADI', 'LEKHA', 43, 'female', 'Confirmed'),
+(25, 1, 8748586, 'anish@logixspace.com', 12009, 'SL', '2022-08-29', '2022-08-28', 'KYJ', 'ALLP', 'TEST ', 80, 'male', 'Confirmed');
 
 -- --------------------------------------------------------
 
@@ -69,6 +73,7 @@ INSERT INTO `booking` (`id`, `pnr`, `uname`, `Tnumber`, `class`, `doj`, `DOB`, `
 --
 
 CREATE TABLE `interlist` (
+  `id` int(11) NOT NULL,
   `Number` int(6) DEFAULT NULL,
   `st1` varchar(10) DEFAULT NULL,
   `st1arri` varchar(10) DEFAULT NULL,
@@ -98,12 +103,12 @@ CREATE TABLE `interlist` (
 -- Dumping data for table `interlist`
 --
 
-INSERT INTO `interlist` (`Number`, `st1`, `st1arri`, `st2`, `st2arri`, `st3`, `st3arri`, `st4`, `st4arri`, `st5`, `st5arri`, `Ori`, `Oriarri`, `Dest`, `Desarri`, `Name`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`) VALUES
-(12009, 'VAPI', '00:15', 'VALSAD', '01:45', 'SURAT', '02:30', 'BARODA', '04:00', 'ANAND', '05:05', 'BCT', '22:15', 'ADI', '06:25', 'SHATABDI EXP', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'X'),
-(12931, 'VAPI', '07:15', 'VALSAD', '08:45', 'SURAT', '09:30', 'BARODA', '11:30', 'ANAND', '12:45', 'BCT', '06:00', 'ADI', '14:20', 'ADI DOUBLE DECK', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'),
-(12932, 'VAPI', '19:15', 'VALSAD', '18:45', 'SURAT', '07:30', 'BARODA', '15:30', 'ANAND', '14:05', 'ADI', '13:00', 'BCT', '22:10', 'BCT DOUBLEDECKE', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'),
-(19011, 'VAPI', '06:26', 'VALSAD', '01:50', 'SURAT', '23:45', 'BARODA', '20:20', 'ANAND', '18:10', 'ADI', '16:25', 'BCT', '10:25', 'GUJARAT EXPRESS', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'),
-(22210, 'VAPI', '00:10', 'VALSAD', '23:50', 'SURAT', '22:25', 'BARODA', '20:05', 'ANAND', '18:20', 'NDLS', '16:15', 'BCT', '01:35', 'BCT DURONTO', 'N', 'N', 'Y', 'N', 'N', 'N', 'Y');
+INSERT INTO `interlist` (`id`, `Number`, `st1`, `st1arri`, `st2`, `st2arri`, `st3`, `st3arri`, `st4`, `st4arri`, `st5`, `st5arri`, `Ori`, `Oriarri`, `Dest`, `Desarri`, `Name`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`) VALUES
+(1, 12009, 'KLM', '00:15', 'KYJ', '01:45', 'ALLP', '02:30', 'EKM', '04:00', 'CLT', '05:05', 'TVM', '22:15', 'CLT', '06:25', 'JANA SHATABDI EXP', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'X'),
+(2, 12931, 'VAPI', '07:15', 'VALSAD', '08:45', 'SURAT', '09:30', 'BARODA', '11:30', 'ANAND', '12:45', 'BCT', '06:00', 'ADI', '14:20', 'ADI DOUBLE DECK', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'),
+(3, 12932, 'VAPI', '19:15', 'VALSAD', '18:45', 'SURAT', '07:30', 'BARODA', '15:30', 'ANAND', '14:05', 'ADI', '13:00', 'BCT', '22:10', 'BCT DOUBLEDECKE', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'),
+(4, 19011, 'VAPI', '06:26', 'VALSAD', '01:50', 'SURAT', '23:45', 'BARODA', '20:20', 'ANAND', '18:10', 'ADI', '16:25', 'BCT', '10:25', 'GUJARAT EXPRESS', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'),
+(5, 22210, 'VAPI', '00:10', 'VALSAD', '23:50', 'SURAT', '22:25', 'BARODA', '20:05', 'ANAND', '18:20', 'NDLS', '16:15', 'BCT', '01:35', 'BCT DURONTO', 'N', 'N', 'Y', 'N', 'N', 'N', 'Y');
 
 -- --------------------------------------------------------
 
@@ -116,11 +121,19 @@ CREATE TABLE `QualityReport` (
   `UserId` int(11) NOT NULL,
   `PNR` int(11) NOT NULL,
   `Pic` varchar(500) NOT NULL,
-  `Place` varchar(500) NOT NULL,
   `Status` varchar(345) NOT NULL,
   `ReportedDate` datetime NOT NULL,
-  `Description` varchar(4500) NOT NULL
+  `Description` varchar(4500) NOT NULL,
+  `Remarks` varchar(1000) NOT NULL DEFAULT 'Processing'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `QualityReport`
+--
+
+INSERT INTO `QualityReport` (`Id`, `UserId`, `PNR`, `Pic`, `Status`, `ReportedDate`, `Description`, `Remarks`) VALUES
+(1, 1, 9786602, 'images/54161 no.jpeg', '0', '2022-08-28 13:36:48', '\r\n                        test complaint', 'Processing'),
+(2, 1, 4834549, 'images/40061 no.jpeg', '0', '2022-08-28 13:38:19', '\r\n                        test complaint 2', 'demooooo');
 
 -- --------------------------------------------------------
 
@@ -1171,7 +1184,7 @@ CREATE TABLE `train_list` (
 --
 
 INSERT INTO `train_list` (`Number`, `Name`, `Origin`, `Destination`, `Arrival`, `Departure`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`, `1A`, `2A`, `3A`, `SL`, `General`, `Ladies`, `Tatkal`) VALUES
-(12009, 'SHATABDI EXP', 'BCT', 'ADI', '22:15', '06:25', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 2500, 1000, 500, 250, 2, 1, 3),
+(12009, 'JANA SHATABDI EXP', 'TVM', 'CLT', '22:15', '06:25', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 2500, 1000, 500, 250, 2, 1, 3),
 (12931, 'ADI DOUBLE DECK', 'BCT', 'ADI', 'First st', '14:20', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 2500, 1000, 500, 250, 2, 1, 3),
 (12932, 'BCT DOUBLEDECKE', 'ADI', 'BCT', '13:00', 'Last st', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 2500, 1000, 500, 250, 2, 1, 3),
 (12952, 'MUMBAI RAJDHANI', 'NDLS', 'BCT', '08:25', 'last st', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
@@ -1190,6 +1203,7 @@ INSERT INTO `train_list` (`Number`, `Name`, `Origin`, `Destination`, `Arrival`, 
 --
 
 CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `f_name` varchar(50) NOT NULL,
   `l_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -1206,9 +1220,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`f_name`, `l_name`, `email`, `password`, `gender`, `marital`, `dob`, `mobile`, `ques`, `ans`) VALUES
-('ayush', 'tripathi', 'ayushtripathi51@gmail.com', '123456789', 'male', 'unmarried', '1999-04-02', 9453890182, 'What was the name of your first school?', '123'),
-('ANISH', 'SASIDHARAN', 'anish@logixspace.com', 'Dev@12345', 'male', 'married', '2004-08-01', 9526674440, 'What is your pets name ?', 'cat');
+INSERT INTO `users` (`id`, `f_name`, `l_name`, `email`, `password`, `gender`, `marital`, `dob`, `mobile`, `ques`, `ans`) VALUES
+(1, 'ANISH', 'SASIDHARAN', 'anish@logixspace.com', 'Dev@12345', 'male', 'married', '2004-08-01', 9526674440, 'What is your pets name ?', 'cat');
 
 --
 -- Indexes for dumped tables
@@ -1227,6 +1240,12 @@ ALTER TABLE `booking`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `interlist`
+--
+ALTER TABLE `interlist`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `QualityReport`
 --
 ALTER TABLE `QualityReport`
@@ -1237,6 +1256,12 @@ ALTER TABLE `QualityReport`
 --
 ALTER TABLE `train_list`
   ADD PRIMARY KEY (`Number`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1252,10 +1277,23 @@ ALTER TABLE `Admin`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `interlist`
+--
+ALTER TABLE `interlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `QualityReport`
 --
 ALTER TABLE `QualityReport`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+

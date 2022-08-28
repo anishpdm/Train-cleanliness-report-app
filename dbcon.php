@@ -2,9 +2,9 @@
 
 
 $ServerName="localhost";
-$DbUserName="root";
-$DbPassword="";
-$DBName="MedicineReportApp";
+$DbUserName="anish";
+$DbPassword="anish";
+$DBName="railres";
 $connection=new mysqli($ServerName,$DbUserName,$DbPassword,$DBName);
 
 ?>

@@ -11,6 +11,7 @@ if(isset($_SESSION['name'])){}
 $tbl_name="booking";
 
 mysqli_select_db($conn,"$db_name") or die("cannot select db");
+$Uid=$_SESSION['id'];
 
 
 $uname=$_SESSION['name'];
@@ -23,6 +24,8 @@ $fromstn=$_GET[	'fromstn'];
 $tostn=$_GET['tostn'];
 $doj=$_GET['doj'];
 $dob=$_GET['dob'];
+$Uid=$_SESSION['id'];
+
 echo "..".$num."..".$name."..".$age."..".$sex."..".$seat."..";
 
 $sql1="SELECT ".$seat." from seats_availability where Train_No='".$num."' and doj='".$doj."'";
@@ -42,8 +45,9 @@ if($value>0){
 	{
 		$pnr = rand(1000000, 10000000);
 
-	$sql="INSERT INTO $tbl_name(pnr,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
-	VALUES ('$pnr','$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
+
+	$sql="INSERT INTO $tbl_name(Uid,pnr,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
+	VALUES ($Uid,'$pnr','$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
 	$result=$conn->query($sql);
 	echo "$sql</br>";
 	if(!$result) die ($conn->error);
@@ -61,8 +65,8 @@ else{
 	if(!empty($name) || !empty($age) )
 	{
 		$pnr= rand(1000000, 10000000);
-	$sql="INSERT INTO $tbl_name(pnr,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
-	VALUES ('$pnr','$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
+	$sql="INSERT INTO $tbl_name(Uid,pnr,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
+	VALUES ($Uid,'$pnr','$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
 	$result=$conn->query($sql);
 	echo "$sql</br>";
 	if(!$result) die ($conn->error);
@@ -87,8 +91,8 @@ if($value>0){
 	$status="Confirmed";
 	if(!empty($name) || !empty($age) )
 	{
-	$sql="INSERT INTO $tbl_name(uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
-	VALUES ('$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
+	$sql="INSERT INTO $tbl_name(Uid,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
+	VALUES ($Uid,'$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
 	$result=$conn->query($sql);
 	echo "$sql</br>";
 	if(!$result) die ($conn->error);
@@ -103,8 +107,8 @@ else{
 	$status="Waiting";
 	if(!empty($name) || !empty($age) )
 	{
-	$sql="INSERT INTO $tbl_name(uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
-	VALUES ('$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
+	$sql="INSERT INTO $tbl_name(Uid,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
+	VALUES ($Uid,'$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
 	$result=$conn->query($sql);
 	echo "$sql</br>";
 	if(!$result) die ($conn->error);
@@ -129,8 +133,8 @@ if($value>0){
 	$status="Confirmed";
 	if(!empty($name) || !empty($age) )
 	{
-	$sql="INSERT INTO $tbl_name(uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
-	VALUES ('$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
+	$sql="INSERT INTO $tbl_name(Uid,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
+	VALUES ($Uid,'$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
 	$result=$conn->query($sql);
 	echo "$sql</br>";
 	if(!$result) die ($conn->error);
@@ -145,8 +149,8 @@ else{
 	$status="Waiting";
 	if(!empty($name) || !empty($age) )
 	{
-	$sql="INSERT INTO $tbl_name(uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
-	VALUES ('$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
+	$sql="INSERT INTO $tbl_name(Uid,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
+	VALUES ($Uid,'$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
 	$result=$conn->query($sql);
 	echo "$sql</br>";
 	if(!$result) die ($conn->error);
@@ -172,8 +176,8 @@ if($value>0){
 	$status="Confirmed";
 	if(!empty($name) || !empty($age) )
 	{
-	$sql="INSERT INTO $tbl_name(uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
-	VALUES ('$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
+	$sql="INSERT INTO $tbl_name(Uid,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
+	VALUES ($Uid,'$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
 	$result=$conn->query($sql);
 	echo "$sql</br>";
 	if(!$result) die ($conn->error);
@@ -188,8 +192,8 @@ else{
 	$status="Waiting";
 	if(!empty($name) || !empty($age) )
 	{
-	$sql="INSERT INTO $tbl_name(uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
-	VALUES ('$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
+	$sql="INSERT INTO $tbl_name(Uid,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
+	VALUES ($Uid,'$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
 	$result=$conn->query($sql);
 	echo "$sql</br>";
 	if(!$result) die ($conn->error);
@@ -216,8 +220,8 @@ if($value>0){
 	$status="Confirmed";
 	if(!empty($name) || !empty($age) )
 	{
-	$sql="INSERT INTO $tbl_name(uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
-	VALUES ('$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
+	$sql="INSERT INTO $tbl_name(Uid,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
+	VALUES ($Uid,'$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
 	$result=$conn->query($sql);
 	echo "$sql</br>";
 	if(!$result) die ($conn->error);
@@ -232,8 +236,8 @@ else{
 	$status="Waiting";
 	if(!empty($name) || !empty($age) )
 	{
-	$sql="INSERT INTO $tbl_name(uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
-	VALUES ('$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
+	$sql="INSERT INTO $tbl_name(Uid,uname,Tnumber,class,doj,DOB,fromstn,tostn,Name,Age,sex,Status)
+	VALUES ($Uid,'$uname','$num','$seat','$doj','$dob','$fromstn','$tostn','$name','$age','$sex','$status')";
 	$result=$conn->query($sql);
 	echo "$sql</br>";
 	if(!$result) die ($conn->error);

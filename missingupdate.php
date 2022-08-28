@@ -32,8 +32,7 @@
                         $qid = (int) $_GET['qid'];
 
 
-                        $sql = "SELECT m.`Id`, u.Name,u.Address,u.Phone, `Pic`, `Place`, `Status`, `ReportedDate`, `Description` FROM `MedQualityReport`m JOIN Users u on u.Id=m.UserId where m.`Id`= 
-$qid";
+                        $sql = "SELECT `Id`, `UserId`, `PNR`, `Pic`, `Status`, `ReportedDate`, `Description`, `Remarks` FROM `QualityReport` WHERE `Id`= $qid";
                         $res = $connection->query($sql);
 
                         if ($res->num_rows > 0) {
@@ -41,13 +40,12 @@ $qid";
                             while ($row = $res->fetch_assoc()) {
 
 
-                                $PersonName = $row["Name"];
-                                $Address = $row["Address"];
+                                $PNR = $row["PNR"];
+
                                 $Description = $row["Description"];
 
                                 echo "<tr> <td>  </td>  <td> <input type='hidden' value='$qid' name='qid' />  </td> </tr>";
-                                echo "<tr> <td> Name </td>  <td> $PersonName  </td> </tr>";
-                                echo "<tr> <td> Address </td>  <td> $Address  </td> </tr>";
+                                echo "<tr> <td> PNR </td>  <td> $PNR  </td> </tr>";
                                 echo "<tr> <td> Complaint </td>  <td> $Description  </td> </tr>";
 
                                 echo "<tr> <td>  Current Status </td>  <td> <textarea class='form-control' name='ans'   cols='30' rows='10'></textarea>  </td> </tr>";
@@ -90,7 +88,7 @@ if (isset($_POST['sub'])) {
 
 
 
-    echo $sql = "UPDATE `MedQualityReport` SET `Status`='$ans' WHERE `Id`=$qid";
+    echo $sql = "UPDATE `QualityReport` SET `Remarks`='$ans' WHERE `Id`=$qid";
 
 
     $result = $connection->query($sql);

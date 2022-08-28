@@ -20,7 +20,7 @@
     <br><br><br> <br>
     <div class="container">
         <center>
-            <h1> Medicine Quality Reporting App </h1>
+            <h1> IRCTC Quality Reporting App </h1>
         </center>
         <center>
             <h4>Administrator</h4>
@@ -50,19 +50,7 @@
                         </tr>
 
 
-                        <tr>
-                            <td></td>
-                            <td>
-                                <center> <a href="reg.php">New Users Click Here</a> </center>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td></td>
-                            <td>
-                                <center> <a href="userlogin.php">User LogIn Here</a> </center>
-                            </td>
-                        </tr>
+         
 
 
 
@@ -93,7 +81,7 @@ if (isset($_POST["login"])) {
             $name = $row["name"];
             $_SESSION["id"] = $id;
             $_SESSION["name"] = $name;
-            header('Location:viewmedicinereports.php');
+            header('Location:viewcomplaints.php');
         }
     } else {
         echo "<script>  alert('Invalid Credentials')</script>";

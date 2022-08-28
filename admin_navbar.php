@@ -19,18 +19,11 @@
 
 
       <li class="nav-item">
-        <a class="nav-link active" href="viewmedicinereports.php">View Medicine Quality Complaints </a>
+        <a class="nav-link active" href="viewcomplaints.php">View  Quality Complaints </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="datesearch.php">Date Search</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="viewusers.php">View Users</a>
-      </li>
+    
+    
 
-      <li class="nav-item">
-        <a class="nav-link active" href="addMededicine.php">Add Medicine </a>
-      </li>
       <!-- <li class="nav-item">
         <a class="nav-link active" href="viewcomplaints.php"> View Complaints </a>
       </li> -->

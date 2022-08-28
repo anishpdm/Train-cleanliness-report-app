@@ -51,7 +51,7 @@ $result = mysqli_query($conn, $sql);
 	<div class="wrap">
 		<div class="header">
 			<div style="float:left;width:150px;">
-				<img src="images/logo.jpg" />
+
 			</div>
 			<div>
 				<div style="float:right; font-size:20px;margin-top:20px;">
